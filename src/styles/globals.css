@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050505;
+  --foreground: #e5e7eb; /* Equivalente ao gray-200 */
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar Temática Tibia */
+@layer base {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #451a03;
+    border-radius: 4px;
+  }
+}

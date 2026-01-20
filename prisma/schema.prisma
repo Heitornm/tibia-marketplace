@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Item {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  category    String   // Ex: Legs, Boots, Armaduras 
+  imageUrl    String?
+  attributes  String?  // Ex: "Arm: 14, Speed: +10" [cite: 9]
+  offers      Offer[]
+  createdAt   DateTime @default(now())
+}
+
+model Offer {
+  id          String   @id @default(uuid())
+  price       String   // Pode ser GPS ou Tibia Coins
+  world       String   // Mundo do personagem
+  contact     String   // Nick ou Discord
+  createdAt   DateTime @default(now())
+  
+  itemId      String
+  item        Item     @relation(fields: [itemId], references: [id])
+}
